@@ -5,6 +5,7 @@ import VueResource from 'vue-resource'
 
 import App from './App'
 import CodeItem from './components/CodeItem'
+import Header from './components/Header'
 
 import router from './router'
 
@@ -13,6 +14,7 @@ Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.http.options.emulateJSON = true
 
+Vue.component('app-header', Header)
 Vue.component('code-item', CodeItem)
 
 /* eslint-disable no-new */

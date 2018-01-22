@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid px-5">
-    <img src="../assets/logo.png" class="img-fluid">
+    <app-header v-bind:data="{ links: [{ to: '/', title: 'Accueil' }] }"></app-header>
 
     <h1 class="mb-5">Le codage <em>facile</em> et <em>performant</em></h1>
 
