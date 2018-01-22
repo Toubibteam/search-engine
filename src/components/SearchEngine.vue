@@ -1,5 +1,7 @@
 <template>
   <div class="container-fluid px-5">
+    <img src="../assets/logo.png" class="img-fluid">
+
     <h1 class="mb-5">Le codage <em>facile</em> et <em>performant</em></h1>
 
     <div id="search" class="w-100">
@@ -26,10 +28,7 @@
       <div>
         <code-item v-bind:data="{ id: '#', code: 'Code', title: 'Intitulé', rate: 'Tarif', isHeader: true }"></code-item>
         <div v-for="(code, index) in codes" :key="index">
-          <code-item
-          v-bind:data="code"
-          >
-          </code-item>
+          <code-item v-bind:data="code"></code-item>
         </div>
       </div>
     </div>
