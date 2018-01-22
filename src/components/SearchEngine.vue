@@ -1,20 +1,21 @@
 <template>
   <div class="container-fluid px-5">
-    <h1>{{ msg }}</h1>
+    <h1 class="mb-5">Le codage <em>facile</em> et <em>performant</em></h1>
 
     <div id="search" class="w-100">
       <div class="input-group mb-3">
         <input
           type="text"
-          class="form-control col-10"
+          class="form-control rounded-0 col-10"
           placeholder="Insérez votre recherche"
           aria-label="Insérez votre recherche"
           aria-describedby="basic-addon2"
           v-model="diagnostic"
+          v-on:keyup.13="makeRequest"
           >
           <button
             type="button"
-            class="btn col-2"
+            class="btn text-truncate rounded-0"
             v-bind:class="{ 'btn-outline-primary': !loading, 'btn-outline-secondary': loading }"
             v-on:click="makeRequest"
             >
@@ -37,10 +38,9 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'SearchEngine',
   data () {
     return {
-      msg: 'Chercher LE bon code ;) héhé',
       diagnostic: '',
       codes: [ ],
       loading: false
@@ -92,6 +92,10 @@ h1, h2 {
 
 a {
   color: #42b983;
+}
+
+em {
+  font-weight: bold;
 }
 
 #search {

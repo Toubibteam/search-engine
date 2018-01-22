@@ -2,9 +2,9 @@
   <div class="row py-2"
     v-bind:class="{ header: data.isHeader, code: !data.isHeader }"
     >
-    <div class="col-md-2"> {{data.code}} </div>
-    <div class="col-md-9 text-left"> {{data.title}} </div>
-    <div class="col-md-1"> {{data.rate}} </div>
+    <div class="col-2"> {{data.code}} </div>
+    <div class="col-9 text-left"> {{data.title}} </div>
+    <div class="col-1"> {{data.rate}} </div>
   </div>
 </template>
 
