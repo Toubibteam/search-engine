@@ -15,7 +15,12 @@ export default new Router({
     {
       path: '/codage',
       name: 'SearchEngine',
-      component: SearchEngine
+      component: SearchEngine,
+      props: {
+        data: {
+          API_BASE_URL: process.env.API_BASE_URL
+        }
+      }
     }
   ]
 })
