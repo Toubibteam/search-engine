@@ -2,7 +2,7 @@
   <div class="container-fluid px-5">
     <app-header v-bind:data="{ links: [{ to: '/', title: 'Accueil' }] }"></app-header>
 
-    <h1 class="mb-5">Le codage <em>facile</em> et <em>performant</em></h1>
+    <h1 class="mb-5">Le codage <span class="font-bold">facile</span> et <span class="font-bold">performant</span></h1>
 
     <div id="search" class="w-100">
       <div class="input-group mb-3">
@@ -45,9 +45,10 @@ export default {
       loading: false
     }
   },
+  props: [ 'data' ],
   methods: {
     makeRequest: function () {
-      let url = 'https://tbb-ml-dev.herokuapp.com/api'
+      let url = this.data.API_BASE_URL + '/api'
 
       let body = {
         diagnostic: this.diagnostic
@@ -55,7 +56,7 @@ export default {
 
       let options = {
         headers: {
-          'Content-Type': 'application/json;charset=utf-8'
+          'Content-Type': 'application/json'
         }
       }
 
@@ -68,8 +69,9 @@ export default {
             return {
               id: i,
               code: o.code_id,
-              title: o.description,
-              rate: o.metric
+              title: o.description.description,
+              rate: o.metric,
+              badge: o.description.type
             }
           })
           this.loading = false
@@ -83,17 +85,14 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+@import "../styles/colors.scss";
+
 h1, h2 {
   font-weight: normal;
 }
 
-a {
-  color: #42b983;
-}
-
-em {
+.font-bold {
   font-weight: bold;
 }
 

@@ -3,8 +3,9 @@
     v-bind:class="{ header: data.isHeader, code: !data.isHeader }"
     >
     <div class="col-2"> {{data.code}} </div>
-    <div class="col-9 text-left"> {{data.title}} </div>
+    <div class="col-8 text-left"> {{data.title}} </div>
     <div class="col-1"> {{data.rate}} </div>
+    <div class="col-1"> <span class="badge badge-ccam">{{data.badge}}</span> </div>
   </div>
 </template>
 
@@ -14,8 +15,8 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+@import "../styles/colors.scss";
 
 /*///////////// Item /////////////*/
 
@@ -23,12 +24,12 @@ export default {
   cursor: pointer;
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: rgba(150,150,150,0.1);
+  border-bottom-color: $grey-l;
 }
 
 .code:hover {
-  background-color: rgba(0,150,255,0.1);
-  border-color: rgba(0,150,255,0.1);
+  background-color: $blue-l;
+  border-color: $blue-l;
 }
 
 /*///////////// Title /////////////*/
@@ -37,8 +38,13 @@ export default {
 .header:hover {
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: rgba(150,150,150,0.1);
+  border-bottom-color: $grey-l;
   font-weight: bold;
 }
 
+/*///////////// Common /////////////*/
+
+.badge-ccam {
+  background-color: $ccam;
+}
 </style>
