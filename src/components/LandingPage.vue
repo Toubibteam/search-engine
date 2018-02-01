@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid p-0">
+  <div class="container-fluid m-0 p-0">
     <div id="billboard" class="m-0 p-0">
       <div class="background"> </div>
       <div class="filter"> </div>
@@ -10,14 +10,8 @@
 
     <!-- <router-link to="codage">Moteur de recherche</router-link> -->
 
-    <div id="content" class="my-5 px-2">
-      <section>
-        <h3 class="my-4">Essayez notre <span class="font-bold">moteur de recherche intelligent</span> !</h3>
-
-        <p>Accéder au <router-link to="codage">moteur de recherche intelligent</router-link></p>
-      </section>
-
-      <section>
+    <section class="px-2 py-5">
+      <div class="content">
         <h3 class="my-4">Pourquoi utiliser <span class="font-bold">Toubib</span> ?</h3>
 
         <div class="row">
@@ -43,8 +37,20 @@
             <p>La garantie de trouver le bon code en un clic grâce à notre moteur de recherche intelligent</p>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <section id="search-engine" class="px-2 py-5">
+      <div class="background"> </div>
+      <div class="filter"> </div>
+      <div class="content align-middle">
+        <h3>Essayez notre <span class="font-bold">moteur de recherche intelligent</span> !</h3>
+
+        <router-link to="codage">
+          <button class="btn btn-warning mt-4"> Accéder au moteur <i class="fas fa-user-md"></i> </button>
+        </router-link>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -55,7 +61,27 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+@import "../styles/colors.scss";
+
+.absolute-abst {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+section {
+  > .content {
+    max-width: 1000px;
+    margin: auto;
+  }
+}
+
+button {
+  cursor: pointer;
+}
 
 #billboard {
   display: table;
@@ -63,38 +89,54 @@ export default {
   width: 100%;
   min-height: 50vh;
   height: 50vh;
+
+  #logo {
+    display: table-cell;
+  }
+
+  > .background {
+    @extend .absolute-abst;
+    background-image: url('../assets/microscope.jpg');
+    background-position: center;
+    background-size: cover;
+    z-index: -20;
+  }
+
+  > .filter {
+    @extend .absolute-abst;
+    background-color: #2d2281;
+    z-index: -10;
+    opacity: 0.5;
+  }
 }
 
-#billboard > .background {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-image: url('../assets/microscope.jpg');
-  background-position: center;
-  background-size: cover;
-  z-index: -20;
-}
+#search-engine {
+  display: table;
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  height: 50vh;
+  border-top: 10px solid $navy;
+  color: $white;
 
-#billboard > .filter {
-  background-color: #2d2281;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -10;
-  opacity: 0.5;
-}
+  > .background {
+    @extend .absolute-abst;
+    background-image: url('../assets/pattern-hexagons.png');
+    background-position: center;
+    z-index: -20;
+    opacity: 0.8;
+  }
 
-#logo {
-  display: table-cell;
-}
+  > .filter {
+    @extend .absolute-abst;
+    background-color: #2d2281;
+    z-index: -10;
+    opacity: 0.85;
+  }
 
-#content {
-  max-width: 1000px;
-  margin: auto;
+  > .content {
+    display: table-cell;
+  }
 }
 
 .font-bold {
@@ -106,21 +148,21 @@ export default {
   height: 80px;
   width: 80px;
   margin: auto;
-}
 
-.icon .square {
-  height: 100%;
-  width: 100%;
-  background-color: navy;
-  position: absolute;
-  z-index: -2;
-}
+  .square {
+    height: 100%;
+    width: 100%;
+    background-color: $navy;
+    position: absolute;
+    z-index: -2;
+  }
 
-.icon img {
-  max-height: 60px;
-  position: absolute;
-  left: 10px;
-  top: 10px;
+  img {
+    max-height: 60px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
 }
 
 </style>
