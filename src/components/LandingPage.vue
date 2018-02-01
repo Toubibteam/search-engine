@@ -51,6 +51,8 @@
         </router-link>
       </div>
     </section>
+
+    <app-footer> </app-footer>
   </div>
 </template>
 
