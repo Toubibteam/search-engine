@@ -1,29 +1,33 @@
 <template>
-  <div id="host" class="container-fluid py-3">
-    <img src="../assets/logo.png" class="img-fluid logo-img">
-
-    <div>
-      <router-link v-for="(link, index) in data.links" :key="index" v-bind:to="link.to"> {{ link.title }} </router-link>
-    </div>
+  <div id="host" class="container-fluid row py-3">
+    <div class="col-md-2"> <div class="align-middle"> <router-link to="/"> <img src="../assets/logo.png" class="img-fluid logo-brand"> </router-link> </div> </div>
+    <div class="col-md-6"> </div>
+    <div class="col-md-2"> <div class="align-middle"> <router-link to="/"> <i class="fas fa-hospital"></i> Accueil </router-link> </div> </div>
+    <div class="col-md-2"> <div class="align-middle"> <router-link to="/"> <i class="fas fa-stethoscope"></i> Contact </router-link> </div> </div>
   </div>
 </template>
 
 <script>
-export default {
-  props: [ 'data' ]
-}
+export default { }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "../styles/colors.scss";
 
 #host {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: rgba(150,150,150,0.1);
-}
+  border-bottom: 2px solid $grey-l;
 
-.logo-img {
-  max-height: 80px;
-}
+  .logo-brand {
+    max-height: 60px;
+  }
 
+  > div {
+    display: table;
+
+    > div {
+      height: 60px;
+      display: table-cell;
+    }
+  }
+}
 </style>
