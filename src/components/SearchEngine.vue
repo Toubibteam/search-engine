@@ -26,7 +26,12 @@
       </div>
 
       <div>
-        <code-item v-bind:data="{ id: '#', code: 'Code', title: 'Intitulé', rate: 'Tarif', isHeader: true }"></code-item>
+        <div id="code-list-header" class="row">
+          <div class="col-md-2"> Code </div>
+          <div class="col-md-8"> Intitulé </div>
+          <div class="col-md-1"> Tarif </div>
+          <div class="col-md-1"> </div>
+        </div>
         <div v-for="(code, index) in codes" :key="index">
           <code-item v-bind:data="code"></code-item>
         </div>
@@ -38,6 +43,7 @@
 <script>
 export default {
   name: 'SearchEngine',
+  props: [ 'data' ],
   data () {
     return {
       diagnostic: '',
@@ -45,7 +51,6 @@ export default {
       loading: false
     }
   },
-  props: [ 'data' ],
   methods: {
     makeRequest: function () {
       let url = this.data.API_BASE_URL + '/api'
@@ -99,5 +104,12 @@ h1, h2 {
 #search {
   margin: auto;
   max-width: 850px;
+}
+
+#code-list-header {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: $grey-l;
+  font-weight: bold;
 }
 </style>

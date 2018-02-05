@@ -1,50 +1,59 @@
 <template>
-  <div class="row py-2"
-    v-bind:class="{ header: data.isHeader, code: !data.isHeader }"
-    >
-    <div class="col-2"> {{data.code}} </div>
-    <div class="col-8 text-left"> {{data.title}} </div>
-    <div class="col-1"> {{data.rate}} </div>
-    <div class="col-1"> <span class="badge badge-ccam">{{data.badge}}</span> </div>
+  <div class="host container-fluid">
+    <div class="header row py-2" v-on:click="showDetails = !showDetails">
+      <div class="col-md-2"> {{data.code}} </div>
+      <div class="col-md-8 text-left"> {{data.title}} </div>
+      <div class="col-md-1"> {{data.rate}} </div>
+      <div class="col-md-1"> <span class="badge badge-ccam">{{data.badge}}</span> </div>
+    </div>
+
+    <div class="details row py-2" v-if="showDetails">
+      <div class="col-md-2"> </div>
+      <div class="col-md-3 text-left font-bold"> Codes associés </div>
+      <div class="col-md-7 text-left">
+        <p v-for="(ac, index) in associatedCodes" :key="index">
+          {{ac}}
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: [ 'data' ]
+  props: [ 'data' ],
+  data () {
+    return {
+      showDetails: false,
+      associatedCodes: [ 'AAA', 'BBB', 'CCC' ]
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "../styles/colors.scss";
 
-/*///////////// Item /////////////*/
+.host {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: $grey-l;
+}
 
-.code {
+.header {
   cursor: pointer;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: $grey-l;
+
+  &:hover {
+    background-color: $grey-l;
+    border-color: $grey-l;
+  }
 }
-
-.code:hover {
-  background-color: $blue-l;
-  border-color: $blue-l;
-}
-
-/*///////////// Title /////////////*/
-
-.header,
-.header:hover {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: $grey-l;
-  font-weight: bold;
-}
-
-/*///////////// Common /////////////*/
 
 .badge-ccam {
   background-color: $ccam;
+}
+
+.font-bold {
+  font-weight: bold;
 }
 </style>
