@@ -3,12 +3,14 @@
     <div id="billboard" class="m-0 p-0">
       <div class="background"> </div>
       <div class="filter"> </div>
-      <div id="logo" class="align-middle">
+      <div id="slogan" class="align-middle">
         <img src="../assets/logo-txt-white.png" class="img-fluid">
+        <h1>Faisons du codage un processus rapide et intuitif</h1>
+        <router-link to="codage">
+          <button class="btn btn-info mt-4"> Accéder au moteur <i class="fas fa-user-md"></i> </button>
+        </router-link>
       </div>
     </div>
-
-    <!-- <router-link to="codage">Moteur de recherche</router-link> -->
 
     <section class="px-2 py-5">
       <div class="content">
@@ -89,11 +91,12 @@ button {
   display: table;
   position: relative;
   width: 100%;
-  min-height: 50vh;
-  height: 50vh;
+  min-height: 100vh;
+  height: 100vh;
 
-  #logo {
+  #slogan {
     display: table-cell;
+    color: $white;
   }
 
   > .background {
@@ -118,22 +121,23 @@ button {
   width: 100%;
   min-height: 50vh;
   height: 50vh;
-  border-top: 10px solid $navy;
   color: $white;
 
   > .background {
     @extend .absolute-abst;
     background-image: url('../assets/pattern-hexagons.png');
     background-position: center;
-    z-index: -20;
-    opacity: 0.8;
-  }
+    z-index: -10;
+    opacity: 0.2;
+}
 
   > .filter {
     @extend .absolute-abst;
-    background-color: #2d2281;
-    z-index: -10;
-    opacity: 0.85;
+    background: #1e5799;
+    background: -webkit-linear-gradient(top, $purple-l 0%, $blue 100%);
+    background: -moz-linear-gradient(top, $purple-l 0%, $blue 100%);
+    background: linear-gradient(to bottom, $purple-l 0%, $blue 100%);
+    z-index: -20;
   }
 
   > .content {
@@ -166,5 +170,4 @@ button {
     top: 10px;
   }
 }
-
 </style>

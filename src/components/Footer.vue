@@ -12,7 +12,6 @@ export default { }
 @import "../styles/colors.scss";
 
 #host {
-  border-top: 10px solid $black;
   background-color: $black-l;
   color: $white;
 }
