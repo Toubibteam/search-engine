@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid m-0 px-5 w-100">
-    <div class="input-group mb-4">
+    <div class="container-fluid input-group mb-4">
       <input
         type="text"
         class="form-control rounded-0 col-10"
@@ -20,12 +20,14 @@
         </button>
     </div>
 
-    <div>
-      <div id="code-list-header" class="row">
-        <div class="col-md-2"> Code </div>
-        <div class="col-md-8"> Intitulé </div>
-        <div class="col-md-1"> Tarif </div>
-        <div class="col-md-1"> Type </div>
+    <div v-if="codes.length !== 0">
+      <div class="container-fluid">
+        <div id="code-list-header" class="row">
+          <div class="col-md-2"> Code </div>
+          <div class="col-md-8"> Intitulé </div>
+          <div class="col-md-1"> Tarif </div>
+          <div class="col-md-1"> Type </div>
+        </div>
       </div>
       <div v-for="(code, index) in codes" :key="index">
         <code-item v-bind:data="code"></code-item>
