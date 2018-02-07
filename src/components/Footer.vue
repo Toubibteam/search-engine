@@ -1,6 +1,6 @@
 <template>
   <div id="host" class="container-fluid py-3">
-    Toubib© 2018
+    Copyright (c) 2018 Copyright Toubib All Rights Reserved.
   </div>
 </template>
 
