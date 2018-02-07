@@ -1,5 +1,7 @@
 <template>
   <div class="container-fluid m-0 p-0">
+    <app-header></app-header>
+
     <div id="billboard" class="m-0 p-0">
       <div class="background"> </div>
       <div class="filter"> </div>
@@ -11,6 +13,12 @@
         </router-link>
       </div>
     </div>
+
+    <section>
+      <div class="content">
+        <app-search-engine v-bind:data="{ API_BASE_URL: data.API_BASE_URL }"> </app-search-engine>
+      </div>
+    </section>
 
     <section class="px-2 py-5">
       <div class="content">
@@ -60,7 +68,13 @@
 
 <script>
 export default {
-  name: 'LandingPage'
+  name: 'LandingPage',
+  /*
+  Props:
+    data: (object)
+      API_BASE_URL: (string) base API URL to connect to
+  */
+  props: [ 'data' ]
 }
 </script>
 

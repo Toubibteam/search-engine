@@ -7,6 +7,7 @@ import App from './App'
 import CodeItem from './components/CodeItem'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import SearchEngine from './components/SearchEngine'
 
 import router from './router'
 
@@ -18,6 +19,7 @@ Vue.http.options.emulateJSON = true
 Vue.component('code-item', CodeItem)
 Vue.component('app-footer', Footer)
 Vue.component('app-header', Header)
+Vue.component('app-search-engine', SearchEngine)
 
 /* eslint-disable no-new */
 new Vue({
