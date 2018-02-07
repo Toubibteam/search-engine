@@ -1,40 +1,34 @@
 <template>
-  <div class="container-fluid px-5">
-    <app-header v-bind:data="{ links: [{ to: '/', title: 'Accueil' }] }"></app-header>
-
-    <h1 class="mb-5">Le codage <span class="font-bold">facile</span> et <span class="font-bold">performant</span></h1>
-
-    <div id="search" class="w-100">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control rounded-0 col-10"
-          placeholder="Insérez votre recherche"
-          aria-label="Insérez votre recherche"
-          aria-describedby="basic-addon2"
-          v-model="diagnostic"
-          v-on:keyup.13="makeRequest"
+  <div class="container-fluid m-0 px-5 w-100">
+    <div class="input-group mb-4">
+      <input
+        type="text"
+        class="form-control rounded-0 col-10"
+        placeholder="Insérez votre recherche"
+        aria-label="Insérez votre recherche"
+        aria-describedby="basic-addon2"
+        v-model="diagnostic"
+        v-on:keyup.13="makeRequest"
+        >
+        <button
+          type="button"
+          class="btn text-truncate rounded-0"
+          v-bind:class="{ 'btn-outline-primary': !loading, 'btn-outline-secondary': loading }"
+          v-on:click="makeRequest"
           >
-          <button
-            type="button"
-            class="btn text-truncate rounded-0"
-            v-bind:class="{ 'btn-outline-primary': !loading, 'btn-outline-secondary': loading }"
-            v-on:click="makeRequest"
-            >
-            Rechercher
-          </button>
-      </div>
+          Rechercher
+        </button>
+    </div>
 
-      <div>
-        <div id="code-list-header" class="row">
-          <div class="col-md-2"> Code </div>
-          <div class="col-md-8"> Intitulé </div>
-          <div class="col-md-1"> Tarif </div>
-          <div class="col-md-1"> </div>
-        </div>
-        <div v-for="(code, index) in codes" :key="index">
-          <code-item v-bind:data="code"></code-item>
-        </div>
+    <div>
+      <div id="code-list-header" class="row">
+        <div class="col-md-2"> Code </div>
+        <div class="col-md-8"> Intitulé </div>
+        <div class="col-md-1"> Tarif </div>
+        <div class="col-md-1"> Type </div>
+      </div>
+      <div v-for="(code, index) in codes" :key="index">
+        <code-item v-bind:data="code"></code-item>
       </div>
     </div>
   </div>
@@ -43,6 +37,11 @@
 <script>
 export default {
   name: 'SearchEngine',
+  /*
+  Props:
+    data: (object)
+      API_BASE_URL: (string) base API URL to connect to
+  */
   props: [ 'data' ],
   data () {
     return {
@@ -92,19 +91,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/colors.scss";
-
-h1, h2 {
-  font-weight: normal;
-}
-
-.font-bold {
-  font-weight: bold;
-}
-
-#search {
-  margin: auto;
-  max-width: 850px;
-}
 
 #code-list-header {
   border-bottom-style: solid;
