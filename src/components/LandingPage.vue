@@ -8,9 +8,6 @@
       <div id="slogan" class="align-middle">
         <img src="../assets/logo-txt-white.png" class="img-fluid">
         <h1>Faisons du codage un processus rapide et intuitif</h1>
-        <router-link to="codage">
-          <button class="btn btn-info mt-4"> Accéder au moteur <i class="fas fa-user-md"></i> </button>
-        </router-link>
       </div>
     </div>
 
@@ -47,18 +44,6 @@
             <p>La garantie de trouver le bon code en un clic grâce à notre moteur de recherche intelligent</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="search-engine" class="px-2 py-5">
-      <div class="background"> </div>
-      <div class="filter"> </div>
-      <div class="content align-middle">
-        <h3>Essayez notre <span class="font-bold">moteur de recherche intelligent</span> !</h3>
-
-        <router-link to="codage">
-          <button class="btn btn-warning mt-4"> Accéder au moteur <i class="fas fa-user-md"></i> </button>
-        </router-link>
       </div>
     </section>
 
