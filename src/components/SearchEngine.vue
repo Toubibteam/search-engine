@@ -73,10 +73,10 @@ export default {
           this.codes = response.body.map((o, i) => {
             return {
               id: i,
-              code: o.code_id,
-              title: o.description.description,
-              rate: o.metric,
-              badge: o.description.type
+              code: o.code,
+              title: o.description,
+              rate: 0,
+              badge: o.type
             }
           })
           this.loading = false
