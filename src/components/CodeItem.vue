@@ -23,6 +23,14 @@
 
 <script>
 export default {
+  /*
+  Props:
+    data: (object)
+      code: (string) id of the code
+      title: (string) description of the code
+      rate: (string) price of the code
+      badge: (string) type of the code, either CCAM or CIM
+  */
   props: [ 'data' ],
   data () {
     return {
