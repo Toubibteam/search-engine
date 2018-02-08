@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid m-0 px-5 w-100">
-    <div class="container-fluid input-group mb-4">
+    <div class="container-fluid input-group">
       <input
         type="text"
         class="form-control rounded-0 col-10"
@@ -21,7 +21,7 @@
     </div>
 
     <div v-if="codes.length !== 0">
-      <div class="container-fluid">
+      <div class="container-fluid mt-4">
         <div id="code-list-header" class="row">
           <div class="col-md-2"> Code </div>
           <div class="col-md-8"> Intitulé </div>
