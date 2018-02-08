@@ -20,8 +20,25 @@
         </button>
     </div>
 
-    <div v-if="displayedCodes.length !== 0">
-      <div class="container-fluid mt-4">
+    <div id="filters" v-if="codes.length !== 0" class="container-fluid mt-4">
+      <button
+        class="btn"
+        v-bind:class="{ 'btn-cim': filters.displayCIM, 'btn-outline-secondary': !filters.displayCIM }"
+        v-on:click="toggleCIM"
+        >
+        CIM
+      </button>
+      <button
+        class="btn"
+        v-bind:class="{ 'btn-ccam': filters.displayCCAM, 'btn-outline-secondary': !filters.displayCCAM }"
+        v-on:click="toggleCCAM"
+        >
+        CCAM
+      </button>
+    </div>
+
+    <div v-if="displayedCodes.length !== 0" class="mt-4">
+      <div class="container-fluid">
         <div id="code-list-header" class="row">
           <div class="col-md-2"> Code </div>
           <div class="col-md-8"> Intitulé </div>
@@ -50,12 +67,29 @@ export default {
       diagnostic: '',
       codes: [ ],
       displayedCodes: [ ],
+      filters: {
+        displayCIM: true,
+        displayCCAM: true
+      },
       loading: false
     }
   },
   methods: {
+    toggleCIM: function () {
+      this.filters.displayCIM = !this.filters.displayCIM
+      this.displayedCodes = this.updateDisplayedCodes(this.codes)
+    },
+    toggleCCAM: function () {
+      this.filters.displayCCAM = !this.filters.displayCCAM
+      this.displayedCodes = this.updateDisplayedCodes(this.codes)
+    },
     updateDisplayedCodes: function (codes) {
-      this.displayedCodes = codes
+      let filteredCodes = codes
+
+      if (!this.filters.displayCIM) filteredCodes = filteredCodes.filter(c => c.type !== 'CIM')
+      if (!this.filters.displayCCAM) filteredCodes = filteredCodes.filter(c => c.type !== 'CCAM')
+
+      return filteredCodes
     },
     fetchCodes: function () {
       let url = this.data.API_BASE_URL + '/api'
@@ -86,7 +120,7 @@ export default {
           })
           this.loading = false
 
-          this.updateDisplayedCodes(this.codes)
+          this.displayedCodes = this.updateDisplayedCodes(this.codes)
         }, response => {
           console.log('fail')
           console.log(response)
@@ -100,10 +134,26 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/colors.scss";
 
+button {
+  cursor: pointer;
+}
+
 #code-list-header {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: $grey-l;
   font-weight: bold;
+}
+
+.btn-cim {
+  color: white;
+  border-color: $cim;
+  background-color: $cim;
+}
+
+.btn-ccam {
+  color: white;
+  border-color: $ccam;
+  background-color: $ccam;
 }
 </style>
