@@ -1,23 +1,26 @@
 <template>
   <div class="container-fluid m-0 px-5 w-100">
     <div class="container-fluid input-group">
-      <input
-        type="text"
-        class="form-control rounded-0 col-10"
-        placeholder="Insérez votre recherche"
-        aria-label="Insérez votre recherche"
-        aria-describedby="basic-addon2"
-        v-model="diagnostic"
-        v-on:keyup.13="fetchCodes"
-        >
+      <div class="row w-100 mx-auto">
+        <input
+          type="text"
+          class="form-control rounded-0 col-md-9"
+          placeholder="Insérez votre recherche"
+          aria-label="Insérez votre recherche"
+          aria-describedby="basic-addon2"
+          v-model="diagnostic"
+          v-on:keyup.13="fetchCodes"
+          >
         <button
           type="button"
-          class="btn text-truncate rounded-0"
+          class="btn text-truncate rounded-0 col-md-3"
           v-bind:class="{ 'btn-outline-primary': !loading, 'btn-outline-secondary': loading }"
           v-on:click="fetchCodes"
           >
           Rechercher
         </button>
+
+      </div>
     </div>
 
     <div id="filters" v-if="codes.length !== 0" class="container-fluid mt-4">
