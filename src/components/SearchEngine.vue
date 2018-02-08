@@ -8,19 +8,19 @@
         aria-label="Insérez votre recherche"
         aria-describedby="basic-addon2"
         v-model="diagnostic"
-        v-on:keyup.13="makeRequest"
+        v-on:keyup.13="fetchCodes"
         >
         <button
           type="button"
           class="btn text-truncate rounded-0"
           v-bind:class="{ 'btn-outline-primary': !loading, 'btn-outline-secondary': loading }"
-          v-on:click="makeRequest"
+          v-on:click="fetchCodes"
           >
           Rechercher
         </button>
     </div>
 
-    <div v-if="codes.length !== 0">
+    <div v-if="displayedCodes.length !== 0">
       <div class="container-fluid mt-4">
         <div id="code-list-header" class="row">
           <div class="col-md-2"> Code </div>
@@ -29,7 +29,7 @@
           <div class="col-md-1"> Type </div>
         </div>
       </div>
-      <div v-for="(code, index) in codes" :key="index">
+      <div v-for="(code, index) in displayedCodes" :key="index">
         <code-item v-bind:data="code"></code-item>
       </div>
     </div>
@@ -49,11 +49,15 @@ export default {
     return {
       diagnostic: '',
       codes: [ ],
+      displayedCodes: [ ],
       loading: false
     }
   },
   methods: {
-    makeRequest: function () {
+    updateDisplayedCodes: function (codes) {
+      this.displayedCodes = codes
+    },
+    fetchCodes: function () {
       let url = this.data.API_BASE_URL + '/api'
 
       let body = {
@@ -81,6 +85,8 @@ export default {
             }
           })
           this.loading = false
+
+          this.updateDisplayedCodes(this.codes)
         }, response => {
           console.log('fail')
           console.log(response)
