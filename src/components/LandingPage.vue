@@ -8,7 +8,7 @@
         <img src="../assets/logo-txt-white.png" class="img-fluid">
         <h1>Faisons du codage un processus rapide et intuitif</h1>
 
-        <div id="search-engine" class="mt-5 p-3 rounded">
+        <div id="search-engine" class="mt-5 py-3 rounded">
           <app-search-engine v-bind:data="{ API_BASE_URL: data.API_BASE_URL }"> </app-search-engine>
         </div>
       </div>

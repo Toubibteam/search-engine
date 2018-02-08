@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid m-0 px-5 w-100">
+  <div class="container-fluid m-0 px-3 w-100">
     <div class="container-fluid input-group">
       <div class="row w-100 mx-auto">
         <input
