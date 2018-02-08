@@ -2,9 +2,9 @@
   <div class="host container-fluid">
     <div class="header row py-2" v-on:click="showDetails = !showDetails">
       <div class="col-md-2"> {{data.code}} </div>
-      <div class="col-md-8 text-left"> {{data.title}} </div>
-      <div class="col-md-1"> {{data.rate}} </div>
-      <div class="col-md-1"> <span class="badge" v-bind:class="{ 'badge-ccam': data.badge == 'CCAM', 'badge-cim': data.badge == 'CIM' }">{{data.badge}}</span> </div>
+      <div class="col-md-8 text-left"> {{data.description}} </div>
+      <div class="col-md-1"> {{data.tarif}} </div>
+      <div class="col-md-1"> <span class="badge" v-bind:class="{ 'badge-ccam': data.type == 'CCAM', 'badge-cim': data.type == 'CIM' }">{{data.type}}</span> </div>
     </div>
 
     <transition name="show">
@@ -27,9 +27,9 @@ export default {
   Props:
     data: (object)
       code: (string) id of the code
-      title: (string) description of the code
-      rate: (string) price of the code
-      badge: (string) type of the code, either CCAM or CIM
+      description: (string) description of the code
+      tarif: (string) price of the code
+      type: (string) type of the code, either CCAM or CIM
   */
   props: [ 'data' ],
   data () {

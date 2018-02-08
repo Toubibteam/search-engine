@@ -75,9 +75,9 @@ export default {
             return {
               id: i,
               code: o.code,
-              title: o.description,
-              rate: 0,
-              badge: o.type
+              description: o.description,
+              tarif: 0,
+              type: o.type
             }
           })
           this.loading = false
