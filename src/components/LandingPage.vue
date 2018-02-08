@@ -1,21 +1,18 @@
 <template>
   <div class="container-fluid m-0 p-0">
-    <app-header></app-header>
+    <div id="fixed-img"> </div>
 
-    <div id="billboard" class="m-0 p-0">
-      <div class="background"> </div>
+    <div id="billboard" class="m-0 p-3">
       <div class="filter"> </div>
       <div id="slogan" class="align-middle">
         <img src="../assets/logo-txt-white.png" class="img-fluid">
         <h1>Faisons du codage un processus rapide et intuitif</h1>
+
+        <div id="search-engine" class="mt-5 p-3 rounded">
+          <app-search-engine v-bind:data="{ API_BASE_URL: data.API_BASE_URL }"> </app-search-engine>
+        </div>
       </div>
     </div>
-
-    <section>
-      <div class="content">
-        <app-search-engine v-bind:data="{ API_BASE_URL: data.API_BASE_URL }"> </app-search-engine>
-      </div>
-    </section>
 
     <section class="px-2 py-5">
       <div class="content">
@@ -86,6 +83,16 @@ button {
   cursor: pointer;
 }
 
+#fixed-img {
+  @extend .absolute-abst;
+  background-image: url('../assets/microscope.jpg');
+  background-position: bottom;
+  background-size: cover;
+  z-index: -20;
+  min-height: 100vh;
+  height: 100vh;
+}
+
 #billboard {
   display: table;
   position: relative;
@@ -93,55 +100,24 @@ button {
   min-height: 100vh;
   height: 100vh;
 
+  > .filter {
+    @extend .absolute-abst;
+    background-color: $blue;
+    z-index: -10;
+    opacity: 0.5;
+  }
+
   #slogan {
     display: table-cell;
     color: $white;
   }
-
-  > .background {
-    @extend .absolute-abst;
-    background-image: url('../assets/microscope.jpg');
-    background-position: center;
-    background-size: cover;
-    z-index: -20;
-  }
-
-  > .filter {
-    @extend .absolute-abst;
-    background-color: #2d2281;
-    z-index: -10;
-    opacity: 0.5;
-  }
 }
 
 #search-engine {
-  display: table;
-  position: relative;
-  width: 100%;
-  min-height: 50vh;
-  height: 50vh;
-  color: $white;
-
-  > .background {
-    @extend .absolute-abst;
-    background-image: url('../assets/pattern-hexagons.png');
-    background-position: center;
-    z-index: -10;
-    opacity: 0.2;
-}
-
-  > .filter {
-    @extend .absolute-abst;
-    background: #1e5799;
-    background: -webkit-linear-gradient(top, $purple-l 0%, $blue 100%);
-    background: -moz-linear-gradient(top, $purple-l 0%, $blue 100%);
-    background: linear-gradient(to bottom, $purple-l 0%, $blue 100%);
-    z-index: -20;
-  }
-
-  > .content {
-    display: table-cell;
-  }
+  background-color: white;
+  color: $black;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .font-bold {
