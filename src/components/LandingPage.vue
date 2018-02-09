@@ -44,6 +44,14 @@
       </div>
     </section>
 
+    <section class="px-2 py-5">
+      <div class="content">
+        <h3 class="my-4">Contactez nous !</h3>
+        <p>Une remarque ? Une demande ? N'hésitez pas à nous contacter</p>
+        <app-contact-form></app-contact-form>
+      </div>
+    </section>
+
     <app-footer> </app-footer>
   </div>
 </template>
