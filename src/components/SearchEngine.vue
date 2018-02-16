@@ -95,7 +95,7 @@ export default {
       return filteredCodes
     },
     fetchCodes: function () {
-      let url = this.data.API_BASE_URL + '/api'
+      let url = `${this.data.API_BASE_URL}/codes/search`
 
       let body = {
         diagnostic: this.diagnostic
