@@ -50,7 +50,7 @@
         </div>
       </div>
       <div v-for="(code, index) in displayedCodes" :key="index">
-        <code-item v-bind:data="code"></code-item>
+        <code-item v-bind:data="Object.assign({}, code, { API_BASE_URL: data.API_BASE_URL })"></code-item>
       </div>
     </div>
   </div>
