@@ -1,16 +1,9 @@
 'use strict'
 
-import uuidV4 from 'uuid/v4'
+import state from './state'
 
 const store = {
-  'state': {
-    // id of the user to track actions
-    'id': uuidV4(),
-    // search performed
-    'search': '',
-    // codes retrieved from the request
-    'codes': [ ]
-  },
+  'state': state,
   'strict': process.env.NODE_ENV !== 'production'
 }
 
