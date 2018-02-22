@@ -68,7 +68,6 @@ export default {
   data () {
     return {
       diagnostic: '',
-      codes: [ ],
       displayedCodes: [ ],
       filters: {
         displayCIM: true,
@@ -77,16 +76,21 @@ export default {
       loading: false
     }
   },
+  computed: {
+    codes () {
+      return this.$store.state.codes
+    }
+  },
   methods: {
-    toggleCIM: function () {
+    toggleCIM () {
       this.filters.displayCIM = !this.filters.displayCIM
       this.displayedCodes = this.updateDisplayedCodes(this.codes)
     },
-    toggleCCAM: function () {
+    toggleCCAM () {
       this.filters.displayCCAM = !this.filters.displayCCAM
       this.displayedCodes = this.updateDisplayedCodes(this.codes)
     },
-    updateDisplayedCodes: function (codes) {
+    updateDisplayedCodes (codes) {
       let filteredCodes = codes
 
       if (!this.filters.displayCIM) filteredCodes = filteredCodes.filter(c => c.type !== 'CIM')
@@ -94,39 +98,15 @@ export default {
 
       return filteredCodes
     },
-    fetchCodes: function () {
-      let url = `${this.data.API_BASE_URL}/codes/search`
-
-      let body = {
-        diagnostic: this.diagnostic
-      }
-
-      let options = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-
+    fetchCodes () {
       this.loading = true
-      this.$http
-        .post(url, JSON.stringify(body), options)
-        .then(response => {
-          console.log('success')
-          this.codes = response.body.map((o, i) => {
-            return {
-              id: i,
-              code: o.code,
-              description: o.description,
-              tarif: 0,
-              type: o.type
-            }
-          })
-          this.loading = false
-
+      this.$store
+        .dispatch('fetchCodes', { 'search': this.diagnostic })
+        .then(() => {
           this.displayedCodes = this.updateDisplayedCodes(this.codes)
-        }, response => {
-          console.log('fail')
-          console.log(response)
+        })
+        .catch(() => { })
+        .finally(() => {
           this.loading = false
         })
     }
