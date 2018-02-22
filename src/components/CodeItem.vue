@@ -40,18 +40,24 @@ export default {
       detailsShown: false,
       associatedCodes: [ ],
       fetchingDetails: false,
-      detailsFetched: false
+      detailsFetched: false,
+      trackingSelection: false,
+      selectionTracked: false
     }
   },
   methods: {
-    showDetails: function () {
+    showDetails () {
       if (!this.detailsFetched && !this.fetchingDetails) {
         this.fetchDetails()
       }
 
+      if (!this.selectionTracked && !this.trackingSelection) {
+        this.trackCodeSelection()
+      }
+
       this.detailsShown = !this.detailsShown
     },
-    fetchDetails: function () {
+    fetchDetails () {
       this.fetchingDetails = true
       let url = `${this.data.API_BASE_URL}/codes/details/preview/${this.data.code}`
 
@@ -90,6 +96,17 @@ export default {
         }, response => {
           this.fetchingDetails = false
           console.log(response)
+        })
+    },
+    trackCodeSelection () {
+      this.trackingSelection = true
+      this.$store.dispatch('trackCodeSelection', { 'code': this.data.code })
+        .then(() => {
+          this.selectionTracked = true
+        })
+        .catch(() => { })
+        .finally(() => {
+          this.trackingSelection = false
         })
     }
   }
