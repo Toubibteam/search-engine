@@ -100,7 +100,13 @@ export default {
     },
     trackCodeSelection () {
       this.trackingSelection = true
-      this.$store.dispatch('trackCodeSelection', { 'code': this.data.code })
+
+      let payload = {
+        'code': this.data.code,
+        'type': this.data.type
+      }
+
+      this.$store.dispatch('trackCodeSelection', payload)
         .then(() => {
           this.selectionTracked = true
         })

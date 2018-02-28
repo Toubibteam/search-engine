@@ -8,6 +8,7 @@ import axios from 'axios'
     context: (object) copy of the store
     payload: (object)
       code: (string) id of the selected code
+      type: (string) type of the selected code
 */
 const action = ({ state }, payload) => {
   return new Promise((resolve, reject) => {
@@ -16,7 +17,8 @@ const action = ({ state }, payload) => {
     let body = {
       'id': state.id,
       'search': state.search,
-      'code': payload.code
+      'code': payload.code,
+      'type': payload.type
     }
 
     let headers = { 'Content-Type': 'application/json' }
